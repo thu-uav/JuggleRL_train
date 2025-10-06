@@ -109,6 +109,7 @@ ln -s ${ISAACSIM_PATH} _isaac_sim
 # create environment variable
 echo -e "alias orbit=$(pwd)/orbit.sh" >> ${HOME}/.bashrc
 source ${HOME}/.bashrc
+conda activate sim2
 
 # building extentions
 sudo apt install cmake build-essential
@@ -136,8 +137,9 @@ pip install -e .
 #### 4. Verification
 ```
 # at OmniDrones/
-cd scripts
-python train.py headless=true wandb.mode=disabled
+cd scripts/shell
+conda activate sim2
+./singlejuggle_sim2real.sh
 ```
 
 #### 5. Working with VSCode
@@ -160,85 +162,25 @@ and edit ``.vscode/settings.json`` as:
     "python.envFile": "${workspaceFolder}/.vscode/.python.env",
 }
 ```
-
-## Option 2: Install Container Version (using Docker)
-The Container version is easier to set up compared to the Local version. However, it's important to note that the Container version does not support real-time rendering. Therefore, it only supports the command with ``headless=true``. You can save videos during training and upload them to Wandb. 
-
-First, make sure your computer has installed ``Docker``, ``NVIDIA Driver`` and ``NVIDIA Container Toolkit``. Then, you should successfully run: 
-
-```
-# Verification
-docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
-```
-
-Download the image from Docker Hub:
-```
-docker pull jimmyzhangruize/isaac-sim:2023.1.0-hotfix.1
-```
-This image already includes Isaac sim, so you don't neet to download Isaac sim. However, you need to clone the OmniDrones repository to your local computer because we use OmniDrones mounted in the container.
-
-Then, run the image:
-```
-docker run --name *** --entrypoint bash -dit --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
--e "PRIVACY_CONSENT=Y" \
--v ~/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw \
--v ~/docker/isaac-sim/cache/ov:/root/.cache/ov:rw \
--v ~/docker/isaac-sim/cache/pip:/root/.cache/pip:rw \
--v ~/docker/isaac-sim/cache/glcache:/root/.cache/nvidia/GLCache:rw \
--v ~/docker/isaac-sim/cache/computecache:/root/.nv/ComputeCache:rw \
--v ~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
--v ~/docker/isaac-sim/data:/root/.local/share/ov/data:rw \
--v ~/docker/isaac-sim/documents:/root/Documents:rw \
--v ***:/root/OmniDrones:rw \
--v /data:/data \
--e "WANDB_API_KEY=***" \
-jimmyzhangruize/isaac-sim:2023.1.0-hotfix.1
-```
-
-Note that:
-1. You need to replace *** in ```--name ***``` with the your docker image name.
-1. You need to replace *** in ```-v ***:/root/OmniDrones:rw``` with the directory where OmniDrones is locally located in.
-2. You need to replace *** in ```-e "WANDB_API_KEY=***"``` with your own WANDB_API_KEY. If you do not need to use Wandb, you can omit this line.
-3. In the container, OmniDrones is located at ``/root/OmniDrones`` and Isaac-sim is located at ``/isaac-sim``.
-
-
-Install OmniDrones in the container:
-```
-conda activate sim23
-cd /root/OmniDrones
-cp -r conda_setup/etc $CONDA_PREFIX
-conda activate sim23 # re-activate the environment
-pip install -e . # install OmniDrones
-```
-
-Verify you can successfully run OmniDrones in the container (use ``deploy`` branch):
-
-```
-cd /root/OmniDrones/scripts
-python train.py headless=true wandb.mode=disabled total_frames=50000 task=Hover
-```
-
     
 ## Usage
 
-For usage and more details, please refer to the [documentation](https://omnidrones.readthedocs.io/en/latest/).
+For usage and more details, please refer to Omnidrones's [documentation](https://omnidrones.readthedocs.io/en/latest/).
 
 
 ## Citation
 
-Please cite [this paper](https://arxiv.org/abs/2309.12825) if you use *OmniDrones* in your work:
+Please cite [this paper](https://arxiv.org/abs/2509.24892) if you use *JuggleRL* in your work:
 
 ```
-@misc{xu2023omnidrones,
-    title={OmniDrones: An Efficient and Flexible Platform for Reinforcement Learning in Drone Control}, 
-    author={Botian Xu and Feng Gao and Chao Yu and Ruize Zhang and Yi Wu and Yu Wang},
-    year={2023},
-    eprint={2309.12825},
-    archivePrefix={arXiv},
-    primaryClass={cs.RO}
+@article{ji2025jugglerl,
+  title={JuggleRL: Mastering Ball Juggling with a Quadrotor via Deep Reinforcement Learning},
+  author={Ji, Shilong and Chen, Yinuo and Wang, Chuqi and Chen, Jiayu and Zhang, Ruize and Gao, Feng and Tang, Wenhao and Yu, Shu'ang and Xiang, Sirui and Chen, Xinlei and others},
+  journal={arXiv preprint arXiv:2509.24892},
+  year={2025}
 }
 ```
 
 ## Ackowledgement
 
-Some of the abstractions and implementation was heavily inspired by [Isaac Orbit](https://github.com/NVIDIA-Omniverse/Orbit).
+Some of the abstractions and implementation was heavily inspired by [Isaac Orbit](https://github.com/NVIDIA-Omniverse/Orbit) and [OmniDrones](https://github.com/btx0424/OmniDrones).
