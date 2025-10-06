@@ -163,8 +163,8 @@ and edit ``.vscode/settings.json`` as:
 ```
     
 ## Usage
-
-For usage and more details, please refer to Omnidrones's [documentation](https://omnidrones.readthedocs.io/en/latest/).
+This repository intentionally contains the minimal components required to reproduce JuggleRL experiments. Large assets and unrelated tasks are omitted. 
+For usage and more details, please refer to Omnidrones' [documentation](https://omnidrones.readthedocs.io/en/latest/).
 
 
 ## Citation
