@@ -1,0 +1,15 @@
+from .mappo_SecPass_Att import MAPPOPolicy_SecPass_Att
+from .mappo_SecPass_Att_w_hover import MAPPOPolicy_SecPass_Att_w_hover
+from .mappo_Att import MAPPOPolicy_Att
+from .mappo_Block_multi import MAPPOPolicy_Block_multi
+from .mappo_SecPass_w_hover import MAPPOPolicy_SecPass_w_hover
+from .mappo_Att_hover import MAPPOPolicy_Att_hover
+
+from .mappo_FirstPass_multi import MAPPOPolicy_FirstPass_multi
+from .mappo_FirstPass_multi_hover import MAPPOPolicy_FirstPass_multi_hover
+from .mappo_SecPass_multi import MAPPOPolicy_SecPass_multi
+from .mappo_SecPass_multi_hover import MAPPOPolicy_SecPass_multi_hover
+from .mappo_Att_multi import MAPPOPolicy_Att_multi
+from .mappo_Att_multi_hover import MAPPOPolicy_Att_multi_hover
+
+from .mappo_full_game import MAPPOPolicy_full_game

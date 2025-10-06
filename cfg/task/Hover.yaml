@@ -1,0 +1,40 @@
+name: Hover
+
+defaults:
+  # see https://hydra.cc/docs/advanced/overriding_packages/
+  - /base/env_base@_here_
+  - /base/sim_base@_here_
+
+env:
+  num_envs: 4096
+  max_episode_length: 500
+
+drone_model: Air
+force_sensor: false
+
+reward_action_smoothness_weight: 1.0
+reward_distance_scale: 5.0
+reward_up_weight: 1.0
+reward_spin_weight: 1.0
+
+# flag
+use_disturbance: 0
+use_eval: 0
+use_rotor2critic: 0 # need to set critic_input = 'state'
+use_action_history: false
+action_history_step: 5
+
+# observation options
+omega: false
+motor: false
+time_encoding: false
+
+action_transform: PIDrate_FM
+# action_transform: PIDrate_FM
+# action_transform: rate
+
+# sim2real options
+add_noise: false
+action_filter: false
+latency: false
+action_noise: false

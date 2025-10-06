@@ -1,0 +1,27 @@
+# hydra.job.chdir: false
+
+headless: true
+
+sim: ${task.sim}
+env: ${task.env}
+
+seed: 0
+
+actor_deteministic: true
+track_action: false
+disbale_tqdm: true
+
+video_path: eval.mp4 # annotate this line to disable video recording
+
+viewer:
+#  target_env_id: 0 # default: central 
+  resolution: [960, 720]
+  eye: [2, 2, 1.5]
+  lookat: [0., 0., 2.]
+
+policy_checkpoint_path: policy_checkpoints/${task.name}/baseline.pt
+
+defaults:
+  - task: TraditionalJuggle
+  - algo: mappo
+  - _self_

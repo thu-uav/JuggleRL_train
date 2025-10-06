@@ -1,0 +1,46 @@
+# hydra.job.chdir: false
+
+headless: true
+
+sim: ${task.sim}
+env: ${task.env}
+
+total_frames: 200_000_000
+max_iters: -1
+eval_interval: -1
+save_interval: -1
+seed: 1
+
+only_eval: false
+only_eval_one_traj: false
+eval_type: false
+use_debug_policy: false
+
+policy_checkpoint_path:
+
+use_local_usd: true
+
+viewer:
+  resolution: [960, 720]
+  eye: [7., 0., 5.] # [7., 0., 6.]
+  lookat: [0., 0., 0.] # [-1., 0., 0.]
+
+run_name_suffix:
+
+wandb:
+  group: ${oc.select:..task.name}
+  run_name: deafult
+  # run_name: eval
+  job_type: train
+  entity: JJJJJllll
+  project: ${oc.select:..task.name}
+  mode: online # set to 'disabled' when debugging locally
+  # mode: disabled
+  run_id:
+  monitor_gym: True
+  tags:
+
+defaults:
+  - task: Hover
+  - algo: mappo
+  - _self_

@@ -1,0 +1,87 @@
+name: SingleJuggle
+
+defaults:
+  # see https://hydra.cc/docs/advanced/overriding_packages/
+  - /base/env_base@_here_
+  - /base/sim_base@_here_
+  # - /base/randomization_base@_here_
+
+ball_mass: 0.0472 # kg
+ball_radius: 0.04 # m
+
+env:
+  num_envs: 4096
+  max_episode_length: 500
+
+drone_model: Air
+force_sensor: false
+time_encoding: false
+
+action_transform: PIDrate_FM # CTBR
+
+use_action_error_order2: false
+
+reward_action_smoothness_weight: 2.0
+on_the_spot: false
+use_eval: false
+
+hit_random_vel: false
+
+use_obs_noise: false
+
+# 击球间隔参数
+true_hit_step_gap: 35  # 两次有效击球之间的最小步数间隔，35 * 0.02s = 0.7s = 0.6 meter
+
+# 观测延迟参数
+drone_vel_latent_step: 2  # 无人机速度延迟步骤，0表示不延迟，1表示延迟1步，2表示延迟2步
+ball_linear_vel_latent_step: 2  # 球体线性速度延迟步骤，0表示不延迟，1表示延迟1步，2表示延迟2步
+
+# 位置惩罚参数
+use_pos_xy_penalty: true  # 是否使用水平位置惩罚
+pos_xy_penalty_weight: 1.0  # 水平位置惩罚权重
+use_pos_z_penalty: true  # 是否使用垂直位置惩罚
+pos_z_penalty_weight: 0.2  # 垂直位置惩罚权重
+
+# 距离裁剪参数
+use_distance_clip: true  # 是否使用距离裁剪
+min_distance_clip: 0.2  # 最小距离裁剪值，单位为米
+
+# 中心击球奖励参数
+use_center_hit_reward: true  # 是否使用中心击球奖励
+center_hit_reward_weight: 10.0  # 中心击球奖励权重
+center_hit_reward_scale: 5.0  # 中心击球奖励衰减系数
+
+# 旋转奖励参数
+use_spin_reward: true  # 是否使用旋转奖励
+reward_spin_weight: 1.0  # 旋转奖励权重
+
+# 击球距离惩罚参数
+use_hit_distance_penalty: false  # 是否使用击球距离惩罚
+hit_distance_penalty_weight: 0.5  # 击球距离惩罚权重
+
+# 速度惩罚参数
+use_velocity_penalty: true  # 是否使用速度惩罚
+velocity_penalty_weight: 1.0  # 速度惩罚权重
+
+# 偏航角惩罚参数
+use_yaw_penalty: false  # 是否使用偏航角惩罚
+yaw_penalty_weight: 10.0  # 偏航角惩罚权重
+
+# 姿态角惩罚参数
+use_attitude_penalty: false  # 是否使用姿态角惩罚
+attitude_penalty_weight: 10.0  # 姿态角惩罚权重
+max_attitude_angle: 5.0  # 最大姿态角，单位为度
+
+# 球高度奖励参数
+use_ball_height_reward: true  # 是否使用球高度奖励
+target_ball_height: 1.6  # 目标球高度
+
+use_restitution_randomization: false
+restitution_range: [0.7, 0.95]
+base_restitution: 0.8
+
+hit_random_vel_prob: 0.1
+
+
+stats:
+  complete_reward_stats: true
