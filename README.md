@@ -1,4 +1,4 @@
-![Visualization of JuggleRL](docs/source/_static/behavior2_small.pdf)
+![Visualization of JuggleRL](docs/source/_static/overview.png)
 
 ---
 
@@ -169,7 +169,7 @@ For usage and more details, please refer to Omnidrones's [documentation](https:/
 
 ## Citation
 
-Please cite [this paper](https://arxiv.org/abs/2509.24892) and OmniDrones(https://ieeexplore.ieee.org/abstract/document/10409589) if you use *JuggleRL* in your work:
+Please cite [this paper](https://arxiv.org/abs/2509.24892) and [OmniDrones](https://ieeexplore.ieee.org/abstract/document/10409589) if you use *JuggleRL* in your work:
 
 ```
 @article{ji2025jugglerl,
