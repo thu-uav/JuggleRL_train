@@ -6,8 +6,9 @@
 
 [![IsaacSim](https://img.shields.io/badge/Isaac%20Sim-2023.1.0.hotfix.1-orange.svg)](https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/overview.html)
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html)
-<!-- [![Docs status](https://img.shields.io/badge/docs-passing-brightgreen.svg)](https://omnidrones.readthedocs.io/en/latest/) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- [![Docs status](https://img.shields.io/badge/docs-passing-brightgreen.svg)](https://omnidrones.readthedocs.io/en/latest/) -->
+
 
 *JuggleRL_train* is the training and evaluation code for *JuggleRL*, our RL-based aerial ball-juggling system.
 It is built on top of *OmniDrones*, an open-source platform for reinforcement-learning research on multi-rotor drones in NVIDIA Isaac Sim. We reuse OmniDrones’ efficient and flexible simulation abstractions and utilities, and add a juggling task, training/evaluation scripts, and experiment configs.
