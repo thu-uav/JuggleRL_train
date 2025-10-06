@@ -1,17 +1,16 @@
-![Visualization of OmniDrones](docs/source/_static/visualization.jpg)
+![Visualization of JuggleRL](docs/source/_static/behavior2_small.pdf)
 
 ---
 
-# OmniDrones
+# JuggleRL
 
 [![IsaacSim](https://img.shields.io/badge/Isaac%20Sim-2023.1.0.hotfix.1-orange.svg)](https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/overview.html)
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html)
 [![Docs status](https://img.shields.io/badge/docs-passing-brightgreen.svg)](https://omnidrones.readthedocs.io/en/latest/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
-*OmniDrones* is an open-source platform designed for reinforcement learning research on multi-rotor drone systems. Built on [Nvidia Isaac Sim](https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/overview.html), *OmniDrones* features highly efficient and flxeible simulation that can be adopted for various research purposes. We also provide a suite of benchmark tasks and algorithm baselines to provide preliminary results for subsequent works.
-
+*JuggleRL_train* is the training and evaluation code for *JuggleRL*, our RL-based aerial ball-juggling system.
+It is built on top of *OmniDrones*, an open-source platform for reinforcement-learning research on multi-rotor drones in NVIDIA Isaac Sim. We reuse OmniDrones’ efficient and flexible simulation abstractions and utilities, and add a juggling task, training/evaluation scripts, and experiment configs.
 
 ## Option 1: Install Local Version
 
@@ -170,7 +169,7 @@ For usage and more details, please refer to Omnidrones's [documentation](https:/
 
 ## Citation
 
-Please cite [this paper](https://arxiv.org/abs/2509.24892) if you use *JuggleRL* in your work:
+Please cite [this paper](https://arxiv.org/abs/2509.24892) and OmniDrones(https://ieeexplore.ieee.org/abstract/document/10409589) if you use *JuggleRL* in your work:
 
 ```
 @article{ji2025jugglerl,
@@ -178,6 +177,16 @@ Please cite [this paper](https://arxiv.org/abs/2509.24892) if you use *JuggleRL*
   author={Ji, Shilong and Chen, Yinuo and Wang, Chuqi and Chen, Jiayu and Zhang, Ruize and Gao, Feng and Tang, Wenhao and Yu, Shu'ang and Xiang, Sirui and Chen, Xinlei and others},
   journal={arXiv preprint arXiv:2509.24892},
   year={2025}
+}
+@article{xu2024omnidrones,
+  title={Omnidrones: An efficient and flexible platform for reinforcement learning in drone control},
+  author={Xu, Botian and Gao, Feng and Yu, Chao and Zhang, Ruize and Wu, Yi and Wang, Yu},
+  journal={IEEE Robotics and Automation Letters},
+  volume={9},
+  number={3},
+  pages={2838--2844},
+  year={2024},
+  publisher={IEEE}
 }
 ```
 
